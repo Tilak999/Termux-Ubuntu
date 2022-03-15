@@ -11,28 +11,28 @@ export LANG=C
 folder=/sdcard/ubuntu-system
 echo -e "\x1b[33m [ Mounting system folders ]"
 echo "   [ Mounting /dev ... ]"
-busybox mount --bind /dev $folder/dev
+mount --bind /dev $folder/dev
 echo "   [ Mounting /sys ... ]"
-busybox mount --bind /sys $folder/sys
+mount --bind /sys $folder/sys
 echo "   [ Mounting /proc ... ]"
-busybox mount --bind /proc $folder/proc
+mount --bind /proc $folder/proc
 echo "   [ Mounting /dev/pts ... ]"
-busybox mount --bind /dev/pts $folder/dev/pts
+mount --bind /dev/pts $folder/dev/pts
 echo "   [ Mounting /sdcard ... ]"
-busybox mount --bind /sdcard $folder/sdcard
+mount --bind /sdcard $folder/sdcard
 echo -e "\x1b[32m [ Mounting Done ! ]"
 
 echo -e "\x1b[32m [ Chrooting ... ]\e[0m"
-busybox chroot $folder /bin/su - root
+chroot $folder /bin/su - root
 
 echo -e "\033[1m\x1b[33m [ Unmounting dev/pts ... ]"
-busybox umount $folder/dev/pts
+umount $folder/dev/pts
 echo -e " [ Unmounting /dev ... ]"
-busybox umount $folder/dev
+umount $folder/dev
 echo -e " [ Unmounting /proc ... ]"
-busybox umount $folder/proc
+umount $folder/proc
 echo -e " [ Unmounting sdcard ... ]"
-busybox umount $folder/sdcard
+umount $folder/sdcard
 echo -e " [ Unmounting /sys ... ]"
-busybox umount $folder/sys
+umount $folder/sys
 echo -e " \x1b[32m[ Unmounted ]\e[0m"
